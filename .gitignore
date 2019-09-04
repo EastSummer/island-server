@@ -1,0 +1,10 @@
+.DS_Store
+.idea
+.sass-cache
+*.swp
+npm-debug.log
+node_modules
+dist
+public
+server/config/index.js
+.tmp
