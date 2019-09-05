@@ -4,6 +4,7 @@
 *.swp
 npm-debug.log
 node_modules
+.vscode
 dist
 public
 server/config/index.js

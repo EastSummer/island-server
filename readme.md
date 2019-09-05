@@ -25,6 +25,9 @@
 1. koa-router 路由
    * get/post/put/delete
    * router.get 第一个参数：地址 第二个参数：中间件
+2. nodemon 自动重启server
+   * npm i nodemon -g 全局安装 -> 直接使用nodemon命令
+   * vscode添加配置文件
 
 ### api
 1. 版本->兼容多个版本
