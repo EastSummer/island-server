@@ -13,6 +13,7 @@
 2. 中间件
    * 匿名函数，use注册
    * 可以注册多个，第一个自动执行，余下next()调用
+   * next() => Promise{}
 3. 洋葱模型
    * async fuc() & await next() 保证中间件按洋葱模型执行
 
@@ -21,5 +22,10 @@
 1. commonJS -> require
 2. ES6^ -> import from
 3. AMD
+
+### await
+1. 对后续表达式求值
+2. 阻塞进程
+
 
 ### [IMOOC-Koa](https://coding.imooc.com/learn/list/342.html)
