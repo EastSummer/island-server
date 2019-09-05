@@ -14,8 +14,9 @@
    * 匿名函数，use注册
    * 可以注册多个，第一个自动执行，余下next()调用
    * next() => Promise{}
+   * ctx 传递数据
 3. 洋葱模型
-   * async fuc() & await next() 保证中间件按洋葱模型执行
+   * async fuc() & await next() 保证中间件按洋葱模型顺序执行
 
 
 ### 包和模块的导入导出方式
@@ -25,7 +26,7 @@
 
 ### await
 1. 对后续表达式求值
-2. 阻塞进程
+2. 阻塞进程(异步->同步)
 
 
 ### [IMOOC-Koa](https://coding.imooc.com/learn/list/342.html)
