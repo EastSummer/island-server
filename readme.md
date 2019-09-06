@@ -52,6 +52,7 @@
 1. 开闭原则：软件中的对象（类，模块，函数等等）应该对于扩展是开放的，但是对于修改是封闭的
 2. 循环引用
 3. vscode 终端清空 文件->首选项->键盘快捷方式->```workbench.action.terminal.clear```
+4. 根目录```process.cwd()```
 
 
 ### [IMOOC-Koa](https://coding.imooc.com/learn/list/342.html)
