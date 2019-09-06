@@ -28,6 +28,9 @@
 2. nodemon 自动重启server
    * npm i nodemon -g 全局安装 -> 直接使用nodemon命令
    * vscode添加配置文件
+3. require-directory
+   * 用来递归地迭代指定的目录，并返回这些模块。
+   * 参数 ```(模块, 路径, {visit:fuc, ...})```
 
 ### api
 1. 版本->兼容多个版本
@@ -48,6 +51,7 @@
 ### Others
 1. 开闭原则：软件中的对象（类，模块，函数等等）应该对于扩展是开放的，但是对于修改是封闭的
 2. 循环引用
+3. vscode 终端清空 文件->首选项->键盘快捷方式->```workbench.action.terminal.clear```
 
 
 ### [IMOOC-Koa](https://coding.imooc.com/learn/list/342.html)
