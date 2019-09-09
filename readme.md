@@ -25,12 +25,16 @@
 1. koa-router 路由
    * get/post/put/delete
    * router.get 第一个参数：地址 第二个参数：中间件
+   * 获取参数 ```ctx.params``````ctx.request.query/header```
 2. nodemon 自动重启server
    * npm i nodemon -g 全局安装 -> 直接使用nodemon命令
    * vscode添加配置文件
 3. require-directory
    * 用来递归地迭代指定的目录，并返回这些模块。
    * 参数 ```(模块, 路径, {visit:fuc, ...})```
+4. koa-bodyparser
+   * 获取body中请求参数
+   * ```ctx.request.body```
 
 ### api
 1. 版本->兼容多个版本
@@ -53,6 +57,8 @@
 2. 循环引用
 3. vscode 终端清空 文件->首选项->键盘快捷方式->```workbench.action.terminal.clear```
 4. 根目录```process.cwd()```
+5. Promise中异常未处理```Unhandled promise```
+6. AOP 面向切面编程
 
 
 ### [IMOOC-Koa](https://coding.imooc.com/learn/list/342.html)
