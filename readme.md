@@ -35,6 +35,10 @@
 4. koa-bodyparser
    * 获取body中请求参数
    * ```ctx.request.body```
+5. lodash
+   * 数据处理
+6. validator 校验器
+   * [lin-validator](http://doc.cms.7yue.pro/lin/server/koa/validator.html)
 
 ### api
 1. 版本->兼容多个版本

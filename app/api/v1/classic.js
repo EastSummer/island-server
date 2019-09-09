@@ -1,10 +1,18 @@
 const Router = require('koa-router')
 const router = new Router()
 
-router.get('/v1/classic/latest', (ctx, next) => {
-  ctx.body = {
-    key: 'classic'
-  }
+const { PositiveIntegerValidator } = require('../../validators/validator')
+
+// router.get('/v1/classic/latest', (ctx, next) => {
+//   ctx.body = {
+//     key: 'classic'
+//   }
+// })
+
+router.post('/v1/:id/classic/latest', (ctx, next) => {
+  const v = new PositiveIntegerValidator().validate(ctx)
+  const id = v.get('path.id', parsed=false) // parsed是否做转换
+  ctx.body = 'success'
 })
 
 module.exports = router
