@@ -1,13 +1,21 @@
 const { HttpException } = require('../core/http-exception')
 
+/**
+ * HTTP Status Code 2xx, 4xx, 5xx
+ * message
+ * error_code
+ * request_url
+ */
 const catchError = async (ctx, next) => {
   try {
     await next()
   } catch (error) {
-    // HTTP Status Code 2xx, 4xx, 5xx
-    // message
-    // error_code
-    // request_url
+    // 开发环境
+    // 生产环境
+    if (global.config.environment === 'dev') {
+      throw error
+    }
+
     if (error instanceof HttpException) {
       ctx.body = {
         msg: error.message,
