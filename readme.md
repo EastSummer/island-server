@@ -39,6 +39,9 @@
    * 数据处理
 6. validator 校验器
    * [lin-validator](http://doc.cms.7yue.pro/lin/server/koa/validator.html)
+7. [Sequelize](https://sequelize.org/)
+   * 必须安装相关驱动 ```此处为：mysql2```
+   * 设计数据库主键最好用自增数字，查询性能比字符串(GUID)好，需要考虑并发
 
 ### api
 1. 版本->兼容多个版本
@@ -55,6 +58,15 @@
 ### await
 1. 对后续表达式求值
 2. 阻塞进程(异步->同步)
+
+### 数据库 
+1. xampp
+2. navicat
+   * https://www.jianshu.com/p/5f693b4c9468
+   * https://blog.csdn.net/xiaocy66/article/details/83711213
+   * https://blog.csdn.net/weixin_40845165/article/details/84076958（√）
+3. 连接mysql ```localhost 3306 root```
+4. 新建 ```utf8mb4 utf8mb4_general_ci```
 
 ### Others
 1. 开闭原则：软件中的对象（类，模块，函数等等）应该对于扩展是开放的，但是对于修改是封闭的
