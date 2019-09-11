@@ -15,6 +15,7 @@
    * 可以注册多个，第一个自动执行，余下next()调用
    * next() => Promise{}
    * ctx 传递数据
+   * 只在koa启动时实例化1次
 3. 洋葱模型
    * async fuc() & await next() 保证中间件按洋葱模型顺序执行
 4. ctx
@@ -42,6 +43,9 @@
 7. [Sequelize](https://sequelize.org/)
    * 必须安装相关驱动 ```此处为：mysql2```
    * 设计数据库主键最好用自增数字，查询性能比字符串(GUID)好，需要考虑并发
+8. [bcryptjs](https://www.npmjs.com/package/bcryptjs)
+   * 加密，阻止彩虹攻击...
+   * [How bcryptjs works](https://medium.com/@paulrohan/how-bcryptjs-works-90ef4cb85bf4)
 
 ### api
 1. 版本->兼容多个版本
