@@ -3,9 +3,24 @@ const { Sequelize, Model } = require('sequelize')
 
 // const { sequelize: db } = require('../../core/db') 导入重命名
 const { sequelize } = require('../../core/db')
+const { AuthFailed } = require('../../core/http-exception')
 
 class User extends Model {
-
+  static async verifyEmailPassword(email, plainPassword) {
+    const user = await User.findOne({
+      where: {
+        email,
+      }
+    })
+    if (!user) {
+      throw new AuthFailed('账号不存在')
+    }
+    if (!plainPassword) {
+      throw new AuthFailed('请输入密码')
+    }
+    const correct = bcrypt.compareSync(plainPassword, user.password)
+    if (!correct) throw new AuthFailed('密码错误')
+  }
 }
 
 User.init({

@@ -12,7 +12,7 @@ class ParameterException extends HttpException {
     super()
     this.code = 400
     this.msg = msg || '参数错误'
-    this.errorCode = errorCode || 1000
+    this.errorCode = errorCode || 10000
   }
 }
 
@@ -26,8 +26,28 @@ class Success extends HttpException {
   }
 }
 
+class NotFound extends HttpException {
+  constructor(msg, errorCode) {
+    super()
+    this.code = 404
+    this.msg = msg || '资源未找到'
+    this.errorCode = errorCode || 10000
+  }
+}
+
+class AuthFailed extends HttpException {
+  constructor(msg, errorCode) {
+    super()
+    this.code = 401
+    this.msg = msg || '授权失败'
+    this.errorCode = errorCode || 10004
+  }
+}
+
 module.exports = {
   HttpException,
   ParameterException,
   Success,
+  NotFound,
+  AuthFailed,
 }
