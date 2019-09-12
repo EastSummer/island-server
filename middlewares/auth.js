@@ -4,13 +4,15 @@ const jwt = require('jsonwebtoken')
 const { Forbbiden } = require('../core/http-exception')
 
 class Auth {
-  constructor() {
-    
+  constructor(level) {
+    this.level = level || 1
+    Auth.USER = 8
+    Auth.ADMIN = 16
+    Auth.SUPER_ADMIN = 32
   }
 
   get m() {
     return async (ctx, next) => {
-      // token检测
       const userToken = basicAuth(ctx.req)
       // ctx.req 获取nodeJs原生request对象
       // ctx.request 获取Koa对nodeJs的request封装的对象
@@ -18,6 +20,7 @@ class Auth {
       if (!userToken || !userToken.name) {
         throw new Forbbiden()
       }
+      // token检测
       try {
         var decode = jwt.verify(userToken.name, global.config.security.secretKey)
       } catch (error) {
@@ -26,6 +29,11 @@ class Auth {
           errMsg = 'token已过期'
         }
         // token不合法
+        throw new Forbbiden(errMsg)
+      }
+      // 权限验证
+      if (decode.scope < this.level) {
+        errMsg = '权限不足'
         throw new Forbbiden(errMsg)
       }
       // uid, scope
