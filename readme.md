@@ -47,6 +47,7 @@
    * 加密，阻止彩虹攻击...
    * [How bcryptjs works](https://medium.com/@paulrohan/how-bcryptjs-works-90ef4cb85bf4)
 9. jsonwebtoken jwt令牌
+10. basic-auth
 
 ### api
 1. 版本->兼容多个版本
@@ -80,6 +81,7 @@
 4. 根目录```process.cwd()```
 5. Promise中异常未处理```Unhandled promise```
 6. AOP 面向切面编程
+7. HttpBascAuth
 
 
 ### [IMOOC-Koa](https://coding.imooc.com/learn/list/342.html)

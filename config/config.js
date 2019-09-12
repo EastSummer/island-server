@@ -9,6 +9,6 @@ module.exports = {
   },
   security: {
     secretKey: "abcdefg", // 用无规律的随机字符串
-    expiresIn: 60*60,     // 过期时间
+    expiresIn: 60*60*24*30,     // 过期时间
   }
 }
