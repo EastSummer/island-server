@@ -46,6 +46,7 @@
 8. [bcryptjs](https://www.npmjs.com/package/bcryptjs)
    * 加密，阻止彩虹攻击...
    * [How bcryptjs works](https://medium.com/@paulrohan/how-bcryptjs-works-90ef4cb85bf4)
+9. jsonwebtoken jwt令牌
 
 ### api
 1. 版本->兼容多个版本

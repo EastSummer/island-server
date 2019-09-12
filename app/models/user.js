@@ -19,7 +19,10 @@ class User extends Model {
       throw new AuthFailed('请输入密码')
     }
     const correct = bcrypt.compareSync(plainPassword, user.password)
-    if (!correct) throw new AuthFailed('密码错误')
+    if (!correct) {
+      throw new AuthFailed('密码错误')
+    }
+    return user
   }
 }
 

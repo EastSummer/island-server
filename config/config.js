@@ -7,4 +7,8 @@ module.exports = {
     user: 'root',
     password: 'root',
   },
+  security: {
+    secretKey: "abcdefg", // 用无规律的随机字符串
+    expiresIn: 60*60,     // 过期时间
+  }
 }
