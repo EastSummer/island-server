@@ -82,6 +82,9 @@
 5. Promise中异常未处理```Unhandled promise```
 6. AOP 面向切面编程
 7. HttpBascAuth
+8. wx小程序npm
+   * 根目录安装npm
+   * 工具 -> 构建npm
 
 
 ### [IMOOC-Koa](https://coding.imooc.com/learn/list/342.html)

@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 
-const { dbName, host, port, user, password } = require('../config/config').database
+const { dbName, host, port, user, password } = require('../config/config1').database
 
 // 四个参数 dbName user pwd {...}
 const sequelize = new Sequelize(dbName, user, password, {

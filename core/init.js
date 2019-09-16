@@ -27,7 +27,7 @@ class InitManager {
   }
 
   static loadConfig (path='') {
-    const confgPath = path || process.cwd() + '/config/config.js'
+    const confgPath = path || process.cwd() + '/config/config1.js'
     const config = require(confgPath)
     global.config = config
   }
