@@ -43,6 +43,7 @@
 7. [Sequelize](https://sequelize.org/)
    * 必须安装相关驱动 ```此处为：mysql2```
    * 设计数据库主键最好用自增数字，查询性能比字符串(GUID)好，需要考虑并发
+   * [Type文档](https://sequelize.org/v3/api/datatypes/)
 8. [bcryptjs](https://www.npmjs.com/package/bcryptjs)
    * 加密，阻止彩虹攻击...
    * [How bcryptjs works](https://medium.com/@paulrohan/how-bcryptjs-works-90ef4cb85bf4)
