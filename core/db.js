@@ -19,7 +19,9 @@ const sequelize = new Sequelize(dbName, user, password, {
   },
 })
 
-sequelize.sync()
+sequelize.sync({
+  force: false,   // true 会把表删掉
+})
 
 module.exports = {
   // db: sequelize, 导出重命名

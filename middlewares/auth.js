@@ -18,7 +18,7 @@ class Auth {
       // ctx.request 获取Koa对nodeJs的request封装的对象
       let errMsg = 'token不合法'
       if (!userToken || !userToken.name) {
-        throw new Forbbiden()
+        throw new Forbbiden(errMsg)
       }
       // token检测
       try {
