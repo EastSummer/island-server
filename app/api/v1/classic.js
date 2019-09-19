@@ -5,8 +5,9 @@ const router = new Router({
 
 const { PositiveIntegerValidator } = require('../../validators/validator')
 const { Auth } = require('../../../middlewares/auth')
-const { Flow } = require('../../models/flow')
-const { Art } = require('../../models/art')
+const { Flow } = require('@models/flow')
+const { Art } = require('@models/art')
+const { Favor } = require('@models/favor')
 
 // router.post('/latest', (ctx, next) => {
   // const v = await new PositiveIntegerValidator().validate(ctx)
@@ -22,9 +23,11 @@ router.get('/latest', new Auth().m, async (ctx, next) => {
     ]
   })
   const art = await Art.getData(flow.artId, flow.type)
+  const likeLatest = await Favor.userLikeIt(flow.artId, flow.type, ctx.auth.uid)
   // 序列化 dataValues
   // art.dataValues.index = flow.index
   art.setDataValue('index', flow.index)
+  art.setDataValue('like_status', likeLatest)
   ctx.body = art
 })
 

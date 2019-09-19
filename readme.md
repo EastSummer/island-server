@@ -44,11 +44,16 @@
    * 必须安装相关驱动 ```此处为：mysql2```
    * 设计数据库主键最好用自增数字，查询性能比字符串(GUID)好，需要考虑并发
    * [Type文档](https://sequelize.org/v3/api/datatypes/)
+   * [事务(.transaction)](https://sequelize.org/v3/docs/transactions/)
+     * ```START TRANSACTION -> COMMIT(成功)```
+     * ```START TRANSACTION -> ROLLBACK(失败，撤销所有操作)```
+   * [scopes](https://sequelize.org/v3/docs/scopes/)
 8. [bcryptjs](https://www.npmjs.com/package/bcryptjs)
    * 加密，阻止彩虹攻击...
    * [How bcryptjs works](https://medium.com/@paulrohan/how-bcryptjs-works-90ef4cb85bf4)
 9. jsonwebtoken jwt令牌
 10. basic-auth
+11. module-alias 别名简化require路径
 
 ### api
 1. 版本->兼容多个版本
@@ -74,6 +79,9 @@
    * https://blog.csdn.net/weixin_40845165/article/details/84076958（√）
 3. 连接mysql ```localhost 3306 root```
 4. 新建 ```utf8mb4 utf8mb4_general_ci```
+5. 实体表&关系表
+6. 数据库事务 保证数据的一致性
+7. ACID 原子性 一致性 隔离性 持久性
 
 ### Others
 1. 开闭原则：软件中的对象（类，模块，函数等等）应该对于扩展是开放的，但是对于修改是封闭的
@@ -86,6 +94,7 @@
 8. wx小程序npm
    * 根目录安装npm
    * 工具 -> 构建npm
+9. 
 
 
 ### [IMOOC-Koa](https://coding.imooc.com/learn/list/342.html)
