@@ -3,11 +3,12 @@ const router = new Router({
   prefix: '/v1/classic',
 })
 
-const { PositiveIntegerValidator } = require('../../validators/validator')
+const { PositiveIntegerValidator } = require('@validator')
 const { Auth } = require('../../../middlewares/auth')
 const { Flow } = require('@models/flow')
 const { Art } = require('@models/art')
 const { Favor } = require('@models/favor')
+const { NotFound } = require('../../../core/http-exception')
 
 // router.post('/latest', (ctx, next) => {
   // const v = await new PositiveIntegerValidator().validate(ctx)
@@ -28,6 +29,20 @@ router.get('/latest', new Auth().m, async (ctx, next) => {
   // art.dataValues.index = flow.index
   art.setDataValue('index', flow.index)
   art.setDataValue('like_status', likeLatest)
+  ctx.body = art
+})
+
+router.get('/:index/next', new Auth().m, async (ctx) => {
+  const v = await new PositiveIntegerValidator().validate(ctx, {id: 'index'})
+  const index = v.get('path.index')
+  const art = await Flow.getNextOrPrevous(index+1, ctx.auth.uid)
+  ctx.body = art
+})
+
+router.get('/:index/prevous', new Auth().m, async (ctx) => {
+  const v = await new PositiveIntegerValidator().validate(ctx, {id: 'index'})
+  const index = v.get('path.index')
+  const art = await Flow.getNextOrPrevous(index-1, ctx.auth.uid)
   ctx.body = art
 })
 
