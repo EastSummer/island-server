@@ -1,9 +1,9 @@
-const { Sequelize, Model } = require('sequelize')
+const { Sequelize, Model, Op } = require('sequelize')
 
 const { sequelize } = require('../../core/db')
 const { Movie, Music, Sentence } = require('../models/classic')
 const { Art } = require('../models/art')
-const { LikeError, DislikeError } = require('../../core/http-exception')
+const { LikeError, DislikeError, NotFound } = require('../../core/http-exception')
 
 class Favor extends Model {
   static async like(art_id, type, uid) {
@@ -46,6 +46,19 @@ class Favor extends Model {
       where: { art_id, type, uid }
     })
     return favor ? true : false
+  }
+
+  static async getMyClassicFavors(uid) {
+    const arts = await Favor.findAll({
+      where: {
+        uid,
+        type: { [Op.not]: 400 },
+      }
+    })
+    if (!arts) {
+      throw new NotFound()
+    }
+    return await Art.getList(arts)
   }
 
 }
