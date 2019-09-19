@@ -3,7 +3,7 @@ const router = new Router({
   prefix: '/v1/classic',
 })
 
-const { PositiveIntegerValidator } = require('@validator')
+const { PositiveIntegerValidator, ClassicValidator } = require('@validator')
 const { Auth } = require('../../../middlewares/auth')
 const { Flow } = require('@models/flow')
 const { Art } = require('@models/art')
@@ -44,6 +44,21 @@ router.get('/:index/prevous', new Auth().m, async (ctx) => {
   const index = v.get('path.index')
   const art = await Flow.getNextOrPrevous(index-1, ctx.auth.uid)
   ctx.body = art
+})
+
+router.get('/:type/:id/favor', new Auth().m, async (ctx) => {
+  const v = await new ClassicValidator().validate(ctx)
+  const id = v.get('path.id')
+  const type = v.get('path.type')
+  const art = await Art.getData(id, type)
+  if (!art) {
+    throw new NotFound()
+  }
+  const like = await Favor.userLikeIt(id, type, ctx.auth.uid)
+  ctx.body = {
+    fav_nums: art.fav_nums,
+    like_status: like,
+  }
 })
 
 module.exports = router
