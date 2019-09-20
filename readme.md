@@ -5,6 +5,7 @@
 2. NodeJs Steam (前端工程化基础)
 3. **服务端API**
 4. 作为中间层
+5. 对硬件要求低
 
 ### Koa
 1. 特性
@@ -94,7 +95,10 @@
 8. wx小程序npm
    * 根目录安装npm
    * 工具 -> 构建npm
-9. 
+9. 并发(concurrency)：cpu性能足够快的伪并发； 并行(parallelism)：同时执行,多线程
+10. 宏任务，微任务 EventLoop
+11. cpu密集型：高负载，一直占用cpu资源，导致线程过于繁忙
+12. 资源密集型：网络请求，查询数据库，读写文件...
 
 
 ### [IMOOC-Koa](https://coding.imooc.com/learn/list/342.html)
