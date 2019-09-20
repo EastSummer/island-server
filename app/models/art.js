@@ -1,8 +1,27 @@
 const { Op } = require('sequelize')
 const { flatten } = require('lodash')
-const { Movie, Music, Sentence } = require('../models/classic')
+
+const { Movie, Music, Sentence } = require('./classic')
+const { NotFound } = require('../../core/http-exception')
 
 class Art {
+  constructor(art_id, type) {
+    this.art_id = art_id
+    this.type = type
+  }
+
+  async getDetail(uid) {
+    const { Favor } = require('./favor')
+    const art = await Art.getData(this.art_id, this.type)
+    if (!art) {
+      throw new NotFound()
+    }
+    const like = await Favor.userLikeIt(this.art_id, this.type, uid)
+    return {
+      art,
+      like_status: like,
+    }
+  }
 
   static async getList(artInfoList) {
     const artInfoObj = {
