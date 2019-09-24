@@ -1,7 +1,7 @@
 const util = require('util')
 const axios = require('axios')
 
-const { appId, appSecret, lognUrl } = require('../../config/config1').wx
+const { appId, appSecret, lognUrl } = require('../../config/config').wx
 const { AuthFailed } = require('../../core/http-exception')
 const { User } = require('../models/user')
 const { generateToken } = require('../../core/util')
