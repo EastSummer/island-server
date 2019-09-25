@@ -6,8 +6,14 @@ const router = new Router({
 const { HotBook } = require('../../models/hot-book');
 const { Book } = require('../../models/book');
 const { Favor } = require('../../models/favor')
-const { PositiveIntegerValidator, SearchValidator } = require('../../validators/validator')
+const { Comment } = require('../../models/book-comment')
+const {
+  PositiveIntegerValidator,
+  SearchValidator,
+  AddShortCommentValidator,
+} = require('../../validators/validator')
 const { Auth } = require('../../../middlewares/auth')
+const { success } = require('../../lib/helper')
 
 router.get('/hot_list', async (ctx, next) => {
   const books = await HotBook.getAll()
@@ -39,6 +45,14 @@ router.get('/:book_id/favor', new Auth().m, async ctx => {
   })
   const favor = await Favor.getBookFavor(ctx.auth.uid, v.get('path.book_id'))
   ctx.body = favor
+})
+
+router.post('/add/short_comment', new Auth().m, async ctx => {
+  const v = await new AddShortCommentValidator().validate(ctx, {
+    id: 'book_id',
+  })
+  Comment.addComment(v.get('body.book_id'), v.get('body.content'))
+  success()
 })
 
 module.exports = router

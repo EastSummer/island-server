@@ -1,7 +1,6 @@
 const { Sequelize, Model, Op } = require('sequelize')
 
 const { sequelize } = require('../../core/db')
-const { Movie, Music, Sentence } = require('../models/classic')
 const { Art } = require('../models/art')
 const { LikeError, DislikeError, NotFound } = require('../../core/http-exception')
 

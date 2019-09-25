@@ -1,4 +1,4 @@
-const { Sequelize, Model, Op } = require('sequelize')
+const { Sequelize, Model } = require('sequelize')
 const axios = require('axios')
 const util = require('util')
 
@@ -42,7 +42,7 @@ Book.init({
   },
   fav_nums: {
     type: Sequelize.INTEGER,
-    default: 0,
+    defaultValue: 0,
   }
 },{
   sequelize,
