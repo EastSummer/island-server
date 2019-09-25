@@ -4,6 +4,7 @@ const util = require('util')
 
 const { sequelize } = require('../../core/db')
 const { detailUrl, keywordUrl } = require('../../config/config').yushu
+const { Favor } = require('./favor')
 
 class Book extends Model {
   constructor(id) {
@@ -15,6 +16,16 @@ class Book extends Model {
     const url = util.format(detailUrl, this.id)
     const detail = await axios.get(url)
     return detail.data
+  }
+
+  static async getMyFavorBookCount(uid) {
+    const count = await Favor.count({
+      where: {
+        type: 400,
+        uid,
+      }
+    })
+    return count
   }
 
   static async searchFromYuShu(q, start, count, summary=1) {
