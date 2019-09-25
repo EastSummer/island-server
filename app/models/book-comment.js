@@ -32,6 +32,13 @@ class Comment extends Model {
     return comments
   }
 
+  // toJSON(){
+  //   return {
+  //     content:this.getDataValue('content'),
+  //     nums:this.getDataValue('nums'),
+  //   }
+  // }
+
 }
 
 Comment.init({
