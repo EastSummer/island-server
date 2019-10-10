@@ -39,7 +39,7 @@ router.get('/:index/next', new Auth().m, async (ctx) => {
   ctx.body = art
 })
 
-router.get('/:index/prevous', new Auth().m, async (ctx) => {
+router.get('/:index/previous', new Auth().m, async (ctx) => {
   const v = await new PositiveIntegerValidator().validate(ctx, {id: 'index'})
   const index = v.get('path.index')
   const art = await Flow.getNextOrPrevous(index-1, ctx.auth.uid)

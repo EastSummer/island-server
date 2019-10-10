@@ -3,7 +3,6 @@ const { Sequelize, Model, Op } = require('sequelize')
 const { sequelize } = require('../../core/db')
 const { Favor } = require('./favor')
 
-
 class HotBook extends Model {
   static async getAll() {
     const books = await HotBook.findAll({
@@ -14,8 +13,8 @@ class HotBook extends Model {
       where: {
         art_id: {
           [Op.in]: ids,
-          type: 400,
         },
+        type: 400,
       },
       group: ['art_id'],
       attributes: ['art_id', [Sequelize.fn('COUNT', '*'), 'count']],
@@ -33,7 +32,7 @@ class HotBook extends Model {
         count = favor.get('count')
       }
     })
-    book.setDataValue('count', count)
+    book.setDataValue('fav_nums', count)
     return book
   }
 
