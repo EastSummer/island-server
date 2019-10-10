@@ -3,6 +3,7 @@ const { flatten } = require('lodash')
 
 const { Movie, Music, Sentence } = require('./classic')
 const { NotFound } = require('../../core/http-exception')
+const { host } = require('../../config/config')
 
 class Art {
   constructor(art_id, type) {
@@ -103,6 +104,10 @@ class Art {
         break;
     }
 
+    if (art && art.image) {
+      let imgUrl = art.dataValues.image
+      art.dataValues.image = host + imgUrl
+    }
     return art
   }
 }

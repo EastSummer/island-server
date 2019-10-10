@@ -55,6 +55,7 @@
 9. jsonwebtoken jwt令牌
 10. basic-auth
 11. module-alias 别名简化require路径
+12. koa-static 读取文件
 
 ### api
 1. 版本->兼容多个版本
