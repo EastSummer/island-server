@@ -1,12 +1,13 @@
 const { Sequelize, Model} = require('sequelize')
 const { unset, clone, isArray } = require('lodash')
 
-const { dbName, host, port, user, password } = require('../config/config').database
+const { database, host } = require('../config/config')
+const { dbName, port, user, password } = database
 
 // 四个参数 dbName user pwd {...}
 const sequelize = new Sequelize(dbName, user, password, {
   dialect: 'mysql',   // 数据库类型
-  host,
+  host: database.host,
   port,
   logging: true,      // 操作数据库时，会把原始sql打印在终端
   timezone: '+08:00', // 时区
@@ -36,6 +37,14 @@ Model.prototype.toJSON = function() {
   unset(data, 'updatedAt')
   unset(data, 'createdAt')
   unset(data, 'deletedAt')
+
+  for(key in data) {
+    if (key === 'image') {
+      if (!data[key].startsWith('http')) {
+        data[key] = host + data[key]
+      }
+    }
+  }
 
   if(isArray(this.exclude)){
     this.exclude.forEach(
